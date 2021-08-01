@@ -1,0 +1,61 @@
+{{ $cdn := (.Site.Params.cdn | default "//cdn.bootcss.com") }}
+{{ $jqueryVer := (.Site.Params.jqueryVersion | default "3.5.1") }}
+{{ $highVer := (.Site.Params.highlightjsVersion | default "11.1.0") }}
+{{ $mathjaxVer := (.Site.Params.mathjaxVersion | default "3.0.5") }}
+
+{{ if and (not .Params.disable_highlight) (in (string .Content) "</pre>") }}
+<script src="{{ $cdn }}/highlight.js/{{ $highVer }}/highlight.min.js"></script>
+{{ $.Scratch.Set "highLangs" .Site.Params.highlightjsLang }}
+{{ range .Params.highlightjsLang }}{{ $.Scratch.Add "highLangs" . }}{{ end }}
+{{ range ($.Scratch.Get "highLangs") }}
+<script src="{{ $cdn }}/highlight.js/{{ $highVer }}/languages/{{ . }}.min.js"></script>{{ end }}
+<script>hljs.configure({ languages: [] }); hljs.initHighlightingOnLoad();</script>
+{{ end }}
+
+{{ if .Params.plantuml }}
+<script src="{{ $cdn }}/jquery/{{ $jqueryVer }}/jquery.min.js"></script>
+<script src="/js/rawdeflate.js"></script>
+<script src="/js/jquery_plantuml.js"></script>
+<script type="text/javascript">
+  $(function () {
+    var i = 0;
+    $('pre>code').each(function () {
+      if ($(this).hasClass('language-plantuml')) {
+        var id = 'plantuml-' + i++;
+        var e = $(this).addClass('nohighlight').parent();
+        e.hide();
+        var s = unescape(encodeURIComponent($(this).text()));
+        var imgURL = "http://www.plantuml.com/plantuml/svg/" + encode64(deflate(s, 9));
+        var n = $('<div id="' + id + '"><img src="' + imgURL + '" /></div>').insertAfter(e);
+      }
+    });
+  });
+</script>
+{{ end }}
+
+{{ if .Params.mathjax }}
+<script type="text/javascript" async
+  src="{{ $cdn }}/mathjax/{{ $mathjaxVer }}/es5/tex-mml-chtml.js?config=TeX-MML-AM_CHTML">
+    MathJax.Hub.Config({
+      //CommonHTML: { linebreaks: { automatic: true } },
+      tex2jax: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$']],
+        processEscapes: true,
+        processEnvironments: false,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      }
+    });
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        var x = all[i].SourceElement().parentNode.className;
+        if (x == '') {
+          all[i].SourceElement().parentNode.className += 'has-jax';
+        } else if (x.indexOf('has-jax') == -1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      }
+    });
+</script>
+{{ end }}

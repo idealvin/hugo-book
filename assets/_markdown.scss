@@ -14,10 +14,10 @@
   h4,
   h5,
   h6 {
-    font-weight: normal;
-    line-height: 1;
+    font-weight: 600;
+    line-height: 1.25;
     margin-top: 1.5em;
-    margin-bottom: $padding-16;
+    margin-bottom: 1em;
 
     a.anchor {
       opacity: 0;
@@ -32,10 +32,18 @@
     }
   }
 
-  h4,
-  h5,
-  h6 {
-    font-weight: bolder;
+  h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #ebedef;
+    padding-bottom: .3em;
+  }
+
+  h3 {
+    font-size: 1.25em;
+  }
+
+  h4 {
+    font-size: 1em;
   }
 
   h5 {
@@ -70,19 +78,18 @@
   code {
     padding: 0 $padding-4;
     background: var(--gray-200);
-    border-radius: $border-radius;
     font-size: 0.875em;
   }
 
   pre {
-    padding: $padding-16;
-    background: var(--gray-100);
-    border-radius: $border-radius;
     overflow-x: auto;
+    margin: 0;
+    border-radius: $border-radius;
+    outline: none;
 
     code {
       padding: 0;
-      background: none;
+      background-color: var(--gray-100);
     }
   }
 

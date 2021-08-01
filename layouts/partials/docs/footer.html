@@ -23,8 +23,3 @@
   </div>
 {{ end }}
 </div>
-
-{{ $script := resources.Get "clipboard.js" | resources.Minify }}
-{{ with $script.Content }}
-  <script>{{ . | safeJS }}</script>
-{{ end }}

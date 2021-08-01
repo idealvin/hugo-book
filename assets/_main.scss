@@ -57,7 +57,7 @@ aside nav ul {
   }
 
   a:hover {
-    opacity: 0.5;
+    text-decoration: underline;
   }
 
   ul {
@@ -76,7 +76,8 @@ ul.pagination {
 }
 
 .container {
-  max-width: $container-max-width;
+  //max-width: $container-max-width;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -98,24 +99,30 @@ ul.pagination {
 .book-menu {
   flex: 0 0 $menu-width;
   font-size: $font-size-14;
+  line-height: 1.5;
+
+  .justify-between {
+    justify-content: initial;
+  }
 
   .book-menu-content {
     width: $menu-width;
-    padding: $padding-16;
-    background: var(--body-background);
+    padding: $padding-16 * 2;
+    //background: var(--body-background);
+    background-color: #fafafa;
 
     @include fixed;
   }
 
   a,
   label {
-    color: inherit;
+    color: var(--color-aside-link);
     cursor: pointer;
     word-wrap: break-word;
   }
 
   a.active {
-    color: var(--color-link);
+    color: var(--color-active-link);
   }
 
   input.toggle + label + ul {
@@ -126,11 +133,15 @@ ul.pagination {
     display: block;
   }
 
-  input.toggle + label::after {
+  input.toggle + label::before {
+    width: 0.875rem;
+    margin-left: -0.875rem;
     content: "▸";
   }
 
-  input.toggle:checked + label::after {
+  input.toggle:checked + label::before {
+    width: 0.875rem;
+    margin-left: -0.875rem;
     content: "▾";
   }
 }
@@ -168,6 +179,10 @@ body[dir="rtl"] .book-menu {
   min-width: $body-min-width;
   flex-grow: 1;
   padding: $padding-16;
+
+  article {
+    padding: 0 ($padding-16 * 2);
+  }
 }
 
 .book-post {
@@ -235,9 +250,14 @@ body[dir="rtl"] .book-menu {
 
   .book-toc-content {
     width: $toc-width;
-    padding: $padding-16;
+    padding: 0 $padding-16;
+    background-color: #fafafa;
 
     @include fixed;
+  }
+
+  a {
+    color: var(--color-aside-link);
   }
 
   img {
@@ -248,6 +268,36 @@ body[dir="rtl"] .book-menu {
   nav > ul > li:first-child {
     margin-top: 0;
   }
+}
+
+.book-menu-content::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+.book-menu-content::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: transparent;
+}
+
+.book-menu-content:hover::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #ccc;
+}
+
+.book-toc-content::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+.book-toc-content::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: transparent;
+}
+
+.book-toc-content:hover::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #ccc;
 }
 
 .book-footer {
@@ -405,6 +455,6 @@ body[dir="rtl"] .book-menu {
   .book-page,
   .book-menu .book-menu-content,
   .book-toc .book-toc-content {
-    padding: $padding-16 * 2 $padding-16;
+    padding: $padding-16 * 2;
   }
 }

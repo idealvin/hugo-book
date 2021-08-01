@@ -1,2 +1,19 @@
 <!-- This partial can be replaced to support other commenting engines -->
-{{ template "_internal/disqus.html" . }}
+{{ $cdn := .Site.Params.cdn }}
+{{ $ver := .Site.Params.gitalkVersion }}
+<link rel="stylesheet" href="{{ $cdn }}/gitalk/{{ $ver }}/gitalk.min.css">
+<script src="{{ $cdn }}/gitalk/{{ $ver }}/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '{{ .Site.Params.gitalkClientID }}',
+    clientSecret: '{{ .Site.Params.gitalkClientSecret }}',
+    repo: '{{ .Site.Params.gitalkRepo }}',
+    owner: '{{ .Site.Params.gitalkOwner }}',
+    admin: ['{{ .Site.Params.gitalkOwner }}'],
+    id: location.pathname,
+    language: 'zh-CN',
+    distractionFreeMode: false
+  })
+  gitalk.render('gitalk-container');
+</script>

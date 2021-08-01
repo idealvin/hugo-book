@@ -1,0 +1,7 @@
+{{ if and (not .Params.disable_highlight) (in (string .Content) "</pre>") }}
+{{ $highTheme := .Site.Params.highlightjsTheme }}
+{{ with .Site.Params.highlightjsVersion }}
+<link href='{{ $.Site.Params.cdn | default "//cdn.bootcss.com" }}/highlight.js/{{ . }}/styles/{{ $highTheme }}.min.css'
+  rel='stylesheet' type='text/css' />
+{{ end }}
+{{ end }}
