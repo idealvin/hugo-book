@@ -76,7 +76,6 @@ ul.pagination {
 }
 
 .container {
-  //max-width: $container-max-width;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -123,6 +122,10 @@ ul.pagination {
 
   a.active {
     color: var(--color-active-link);
+  }
+
+  input {
+    outline: none;
   }
 
   input.toggle + label + ul {
@@ -301,7 +304,7 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-footer {
-  padding-top: $padding-16;
+  padding: $padding-16 * 2 $padding-16;
   font-size: $font-size-14;
 
   img {
@@ -315,12 +318,17 @@ body[dir="rtl"] .book-menu {
   margin-top: $padding-16;
 }
 
+.gt-container {
+  padding: 0 $padding-16 * 2;
+}
+
 .book-languages {
   position: relative;
   overflow: visible;
+  outline: none;
 
   padding: $padding-16;
-  margin: -$padding-16;
+  margin: 0;
 
   ul {
     margin: 0;
@@ -366,6 +374,10 @@ body[dir="rtl"] .book-menu {
       padding: $padding-8 $padding-16;
     }
   }
+}
+
+.book-edit {
+  padding: $padding-16;
 }
 
 .book-home {

@@ -20,9 +20,12 @@
     margin-bottom: 1em;
 
     a.anchor {
+      display: inline-block;
       opacity: 0;
-      font-size: 0.75em;
-      vertical-align: middle;
+      width: 1em;
+      font-size: 1em;
+      margin-left: -1em;
+      vertical-align: baseline;
       text-decoration: none;
     }
 
