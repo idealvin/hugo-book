@@ -181,7 +181,7 @@ body[dir="rtl"] .book-menu {
 .book-page {
   min-width: $body-min-width;
   flex-grow: 1;
-  padding: 2 * $padding-16;
+  padding: $padding-16 * 2 $padding-16;
 
   article {
     padding: 0 ($padding-16 * 2);
