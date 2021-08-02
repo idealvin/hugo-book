@@ -181,7 +181,7 @@ body[dir="rtl"] .book-menu {
 .book-page {
   min-width: $body-min-width;
   flex-grow: 1;
-  padding: $padding-16;
+  padding: 2 * $padding-16;
 
   article {
     padding: 0 ($padding-16 * 2);
@@ -253,7 +253,7 @@ body[dir="rtl"] .book-menu {
 
   .book-toc-content {
     width: $toc-width;
-    padding: 0 $padding-16;
+    padding: $padding-16 * 2 $padding-16;
     background-color: #fafafa;
 
     @include fixed;
@@ -471,6 +471,6 @@ body[dir="rtl"] .book-menu {
   .book-page,
   .book-menu .book-menu-content,
   .book-toc .book-toc-content {
-    padding: $padding-16 * 2;
+    padding: $padding-16 * 2 $padding-16;
   }
 }
