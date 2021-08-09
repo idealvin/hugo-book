@@ -12,8 +12,9 @@
     owner: '{{ .Site.Params.gitalkOwner }}',
     admin: ['{{ .Site.Params.gitalkOwner }}'],
     id: location.pathname,
-    //language: 'zh-CN',
-    distractionFreeMode: false
+    language: 'zh-CN',
+    distractionFreeMode: false,
+    proxy: '{{ .Site.Params.gitalkProxy }}'
   })
   gitalk.render('gitalk-container');
 </script>
